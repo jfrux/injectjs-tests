@@ -1,5 +1,6 @@
-define "app/model", (require,app) ->
-    class app.Model extends Backbone.Model
+define "app/collection",["require","backbone"],(require,Backbone) ->
+    class Collection extends Backbone.Collection
         constructor:() ->
 
-    exports.app = app
+    module.setExports(Collection)
+    return

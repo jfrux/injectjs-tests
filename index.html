@@ -26,7 +26,10 @@
     <script src="/javascripts/prereq.js" type="text/javascript"></script>
 
     <script>
-    require.run("app");
+    //require.run("app")
+    require.ensure(["app"], function() {
+      app = require("app");
+    });
     </script>
   </head>
 

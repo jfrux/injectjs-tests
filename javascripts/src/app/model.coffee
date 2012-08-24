@@ -1,5 +1,5 @@
-define "app/model", (require,app) ->
-    class app.Model extends Backbone.Model
-        constructor:() ->
+Backbone = require("backbone")
 
-    exports.app = app
+model = Backbone.Model.extend({})
+
+module.setExports(model)
