@@ -2,16 +2,6 @@
 
 Inject.setModuleRoot("/javascripts/");
 
-window.onerror = function(message) {
-  var err, output;
-  err = document.createElement("p");
-  err.innerHTML = message.replace("\n", "<br>");
-  output = document.getElementById('error-output');
-  output.appendChild(err);
-  output.style.display = 'block';
-  return true;
-};
-
 Inject.addRule(/^jquery$/, {
   path: "libs/jquery",
   pointcuts: {
@@ -34,5 +24,15 @@ Inject.addRule(/^backbone$/, {
 });
 
 Inject.addRule(/^backbone.paginator$/, {
-  path: "libs/backbone/backbone.paginator"
+  path: "libs/backbone/backbone.paginator",
+  pointcuts: {
+    before: function() {
+      var Backbone = require("backbone");
+      var $ = require("jquery");
+      var _ = require("underscore");
+    },
+    after: function() {
+      module.setExports(Backbone.Paginator);
+    }
+  }
 });
