@@ -1,6 +1,8 @@
 console.log("test")
 $ = require("jquery")
 Backbone = require("backbone")
+Backbone.Paginator = require("backbone.paginator")
+require("bootstrap")
 class App extends Backbone.View
     constructor:->
         @$win = window

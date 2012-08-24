@@ -9,6 +9,10 @@ $ = require("jquery");
 
 Backbone = require("backbone");
 
+Backbone.Paginator = require("backbone.paginator");
+
+require("bootstrap");
+
 App = (function(_super) {
 
   __extends(App, _super);

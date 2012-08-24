@@ -14,7 +14,13 @@ Inject.addRule(/^jquery$/, {
 });
 
 Inject.addRule(/^bootstrap$/, {
-  path: "libs/bootstrap"
+  path: "libs/bootstrap",
+  pointcuts: {
+    before: function() {
+      var $;
+      return $ = require("jquery");
+    }
+  }
 });
 
 Inject.addRule(/^underscore$/, {
@@ -23,4 +29,16 @@ Inject.addRule(/^underscore$/, {
 
 Inject.addRule(/^backbone$/, {
   path: "libs/backbone"
+});
+
+Inject.addRule(/backbone\./, {
+  path: function(module) {
+    return "libs/backbone/" + module;
+  },
+  pointcuts: {
+    before: function() {
+      var Backbone;
+      return Backbone = require("backbone");
+    }
+  }
 });
